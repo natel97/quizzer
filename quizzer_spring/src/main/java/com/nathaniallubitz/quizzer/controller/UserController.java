@@ -17,6 +17,7 @@ public class UserController {
         this.userService = userService;
     }
 
+
     @GetMapping("/{id}")
     public UserPOJO answerToUniverse(@PathVariable Integer id) {
         return userService.getUserById(id);

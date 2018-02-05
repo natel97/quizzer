@@ -20,6 +20,8 @@ public class QuizController {
         this.questionService = questionService;
     }
 
+
+
     @GetMapping("/{id}")
     public QuizPOJO getQuizById(@PathVariable Integer id){
         return quizService.getQuizById(id);
