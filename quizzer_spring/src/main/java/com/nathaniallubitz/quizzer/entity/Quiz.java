@@ -28,8 +28,10 @@ public class Quiz {
 	
 	public Quiz() { }
 	public Quiz(QuizPOJO q){
-		this.id = q.getId();
-		this.title = q.getTitle();
+	    if(q.getId() != null)
+		    this.id = q.getId();
+		if(q.getTitle() !=  null)
+		    this.title = q.getTitle();
 		if(q.getQuestions() != null) {
             this.questions = q.getQuestions().stream().map(Question::new).collect(Collectors.toList());
         }

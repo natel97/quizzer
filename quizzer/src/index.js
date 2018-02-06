@@ -15,16 +15,26 @@ import LoginPage from './login_page/LoginMain'
 import MainPage from './main_page/MainPage'
 import QuizIndex from './quiz/QuizIndex'
 import NewQuiz from './quiz/NewQuiz'
+import NavBar from './navbar/navbar'
+import SignupPage from './signup_page/SignupPage'
 
 
 ReactDOM.render(
+  <div id="entire-page">
+  <NavBar />
+  <div id="body">
     <Router history={browserHistory}>
       <div>
-        <Route exact path="/" component={LoginPage} />
+        <Route exact path="/" component={MainPage} />
         <Route path="/user/:id" component={MainPage} />
         <Route path="/quiz" component={QuizIndex} />
         <Route path="/quiz/new" component={NewQuiz} />
+        <Route path="/login" component={LoginPage} />
+        <Route path="/signup" component={SignupPage} />
+        <Route path="*" component={MainPage} />
       </div>
     </Router>
+    </div>
+    </div>
   , document.getElementById('root'));
 registerServiceWorker();

@@ -1,5 +1,6 @@
 import React, { Component }  from 'react'
-import axios from 'axios'
+import { Request } from '../Request'
+import { browserHistory } from 'react-router'
 
 class LoginMain extends React.Component {
 
@@ -13,14 +14,14 @@ class LoginMain extends React.Component {
     }
 
     this.logIn = (event) => {
-      axios.post('http://localhost:8080/users/getToken', {
+      Request.user.token({
         email: this.state.login.username,
         pwHash: this.state.login.password
       }).then((data) => {
         console.log(data)
         if(data.status === 200){
           localStorage.setItem('token', data.data);
-          console.log("Was successful")
+          browserHistory.push('/quiz')
         }
       })
     }

@@ -3,3 +3,24 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+#entire-page{
+  display: flex;
+  flex-direction: column;
+}
+#nav-bar{
+  display: flex;
+  justify-content: space-around;
+  background-color: blue;
+  padding: 16px;
+}
+#nav-bar a{
+  background-color: lightblue;
+  padding: 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: black;
+}
+#body{
+  margin: 16px;
+}

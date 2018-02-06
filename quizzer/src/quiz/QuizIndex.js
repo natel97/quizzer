@@ -1,5 +1,6 @@
 import React, { Component }  from 'react'
 import axios from 'axios'
+import { Request } from '../Request'
 
 
 class QuizIndex extends Component {
@@ -8,7 +9,7 @@ class QuizIndex extends Component {
     this.state = {
       data: []
     }
-    axios.get("http://localhost:8080/quiz").then((data) => {
+  Request.quiz.all().then((data) => {
       this.setState(data: data.data)
       console.log(this.state.data)
     })
@@ -23,7 +24,7 @@ class QuizIndex extends Component {
               </div>
             )
           }
-            <a href="/quiz/new">New Quiz</a>
+        <a href="/quiz/new">New Quiz</a>
       </div>
 
     )}

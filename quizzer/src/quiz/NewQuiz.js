@@ -1,6 +1,7 @@
 import React, { Component }  from 'react'
 import axios from 'axios'
-import {browserHistory} from 'react-router';
+import { browserHistory } from 'react-router';
+import {Request}  from '../Request'
 
 class NewQuiz extends Component {
   constructor(a, b){
@@ -13,9 +14,11 @@ class NewQuiz extends Component {
     }
 
     this.createQuiz = () => {
-      axios.post('http://localhost:8080/quiz', {
-        title: this.state.quiz.title,
-        author: {id: 1}
+      Request.quiz.new({
+        quiz: {
+          title: this.state.quiz.title
+        },
+        token:  localStorage.getItem("token")
       }).then((data) => {
         console.log(data)
         if(data.status === 200){
