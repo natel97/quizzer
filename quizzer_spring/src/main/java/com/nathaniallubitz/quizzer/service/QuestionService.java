@@ -56,4 +56,14 @@ public class QuestionService {
         questionRepository.save(question);
         return new QuestionPOJO(question);
     }
+
+    public QuestionPOJO setCorrectAnswer(Integer id, AnswerPOJO answer) {
+        Answer a = new Answer(answer);
+        Answer existingAnswer = answerRepository.findOne(id);
+        a = existingAnswer == null ? a : existingAnswer;
+        answerRepository.save(a);
+        Question question = questionRepository.findOne(id).setCorrectAnswer(a);
+        questionRepository.save(question);
+        return new QuestionPOJO(question);
+    }
 }

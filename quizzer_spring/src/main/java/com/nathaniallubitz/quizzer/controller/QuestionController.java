@@ -20,9 +20,13 @@ public class QuestionController {
     public QuestionPOJO getQuestionById(@PathVariable Integer id){
         return questionService.getQuestionById(id);
     }
-    @PostMapping("/id")
+    @PostMapping("/{id}")
     public QuestionPOJO addAnswerToQuestion(@PathVariable Integer id, @RequestBody AnswerPOJO answer){
         return questionService.addAnswerToQuestion(id, answer);
+    }
+    @PostMapping("/{id}/correct")
+    public QuestionPOJO setCorrectAnswer(@PathVariable Integer id, @RequestBody AnswerPOJO answer){
+        return questionService.setCorrectAnswer(id, answer);
     }
 
 

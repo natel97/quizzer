@@ -13,8 +13,8 @@ import java.util.List;
 @RestController
 @RequestMapping("quiz")
 public class QuizController {
-    QuizService quizService;
-    QuestionService questionService;
+    private QuizService quizService;
+    private QuestionService questionService;
     public QuizController(QuizService quizService, QuestionService questionService){
         this.quizService = quizService;
         this.questionService = questionService;
@@ -41,4 +41,5 @@ public class QuizController {
     public QuizPOJO addQuestionToQuiz(@PathVariable Integer id, @RequestBody QuestionPOJO question){
         return questionService.addQuestion(question, id);
     }
+
 }

@@ -13,12 +13,13 @@ class LoginMain extends React.Component {
     }
 
     this.logIn = (event) => {
-      axios.post('http://localhost:8080/users', {
+      axios.post('http://localhost:8080/users/getToken', {
         email: this.state.login.username,
         pwHash: this.state.login.password
       }).then((data) => {
         console.log(data)
         if(data.status === 200){
+          localStorage.setItem('token', data.data);
           console.log("Was successful")
         }
       })
