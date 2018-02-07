@@ -17,6 +17,7 @@ import QuizIndex from './quiz/QuizIndex'
 import NewQuiz from './quiz/NewQuiz'
 import NavBar from './navbar/navbar'
 import SignupPage from './signup_page/SignupPage'
+import SingleQuizPage from './quiz/SingleQuizPage'
 
 
 ReactDOM.render(
@@ -29,6 +30,7 @@ ReactDOM.render(
         <Route path="/user/:id" component={MainPage} />
         <Route path="/quiz" component={QuizIndex} />
         <Route path="/quiz/new" component={NewQuiz} />
+        <Route path="/quiz/:id" component={SingleQuizPage} />
         <Route path="/login" component={LoginPage} />
         <Route path="/signup" component={SignupPage} />
         <Route path="*" component={MainPage} />

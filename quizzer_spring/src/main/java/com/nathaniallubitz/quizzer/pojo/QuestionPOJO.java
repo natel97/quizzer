@@ -14,7 +14,9 @@ public class QuestionPOJO {
         if(question.getCorrectAnswer() != null) {
             this.correctAnswer = new AnswerPOJO(question.getCorrectAnswer());
         }
-        this.answers = question.getAnswers().stream().map(AnswerPOJO::new).collect(Collectors.toList());
+        if(question.getAnswers() != null) {
+            this.answers = question.getAnswers().stream().map(AnswerPOJO::new).collect(Collectors.toList());
+        }
     }
 
     private Integer id;

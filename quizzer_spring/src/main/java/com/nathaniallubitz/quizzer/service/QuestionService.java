@@ -21,7 +21,7 @@ public class QuestionService {
 
     private QuestionRepository questionRepository;
     private QuizRepository quizRepository;
-    AnswerRepository answerRepository;
+    private AnswerRepository answerRepository;
 
     public QuestionService(QuestionRepository questionRepository, QuizRepository quizRepository, AnswerRepository answerRepository) {
         this.questionRepository = questionRepository;
@@ -58,12 +58,7 @@ public class QuestionService {
     }
 
     public QuestionPOJO setCorrectAnswer(Integer id, AnswerPOJO answer) {
-        Answer a = new Answer(answer);
-        Answer existingAnswer = answerRepository.findOne(id);
-        a = existingAnswer == null ? a : existingAnswer;
-        answerRepository.save(a);
-        Question question = questionRepository.findOne(id).setCorrectAnswer(a);
-        questionRepository.save(question);
-        return new QuestionPOJO(question);
+        Answer a = answerRepository.findOne(answer.getId());
+        return new QuestionPOJO(questionRepository.save(questionRepository.findOne(id).setCorrectAnswer(a == null ? new Answer(answer) : a)));
     }
 }

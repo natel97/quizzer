@@ -1,6 +1,7 @@
 import React, { Component }  from 'react'
 import axios from 'axios'
 import { Request } from '../Request'
+import _Quiz from './_Quiz'
 
 
 class QuizIndex extends Component {
@@ -16,17 +17,15 @@ class QuizIndex extends Component {
     this.render = () => {
       return(
         <div>
+          <div id="quiz-index">
           {
             this.state.data.map(x =>
-              <div key={x.id}>
-                <p>Title: {x.title}</p>
-                <p>Created by: {x.author.name}</p>
-              </div>
+              <_Quiz data={x} />
             )
           }
+          </div>
         <a href="/quiz/new">New Quiz</a>
       </div>
-
     )}
   }
 }

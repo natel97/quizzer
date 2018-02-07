@@ -24,3 +24,14 @@ body {
 #body{
   margin: 16px;
 }
+.quiz-card{
+display: flex;
+flex-direction: column;
+padding: 32px;
+border: 1px solid blue;
+}
+#quiz-index{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

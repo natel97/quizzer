@@ -15,14 +15,16 @@ import java.util.stream.Collectors;
 
 @Service
 public class QuizService {
-    @Autowired
-    private QuizRepository quizRepository;
-    @Autowired
-    private UserRepository userRepository;
 
-    @Autowired
+    private QuizRepository quizRepository;
+    private UserRepository userRepository;
     private TokenRepository tokenRepository;
 
+    public QuizService(QuizRepository quizRepository, UserRepository userRepository, TokenRepository tokenRepository){
+        this.quizRepository = quizRepository;
+        this.userRepository = userRepository;
+        this.tokenRepository = tokenRepository;
+    }
 
 
     public QuizPOJO getQuizById(Integer id){
