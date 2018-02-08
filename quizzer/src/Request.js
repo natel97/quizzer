@@ -13,7 +13,8 @@ export const Request =  {
       return data;
     }),
     find: (id) => axios.get(`${BASE}/users/${id}`),
-    token: (user) => axios.post(`${BASE}/users/getToken`, user)
+    token: (user) => axios.post(`${BASE}/users/getToken`, user),
+    findByToken: (token) => axios.get(`${BASE}/users/user/lookup/${token}`)
   },
   quiz:{
     new: (quiz) => axios.post(`${BASE}/quiz`, quiz),

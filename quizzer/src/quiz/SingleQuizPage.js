@@ -32,13 +32,10 @@ class SingleQuizPage extends Component{
       questions.filter((x) => x.id == questionID)[0].correctAnswer = {
         id: answerID
       }
-      console.log(questionID)
-      console.log(answerID)
       this.setState(questions);
     }
 
     Request.quiz.get(this.props.params.id).then((data) => {
-      console.log(data)
       let quiz = this.state.quiz
       quiz = data.data
       this.setState(quiz: quiz)
@@ -96,7 +93,6 @@ class SingleQuizPage extends Component{
           )})}
           <input type="submit" value="Add Question" onClick={() => {
             const addedQuestions = this.state.addedQuestions
-            console.log(addedQuestions)
             addedQuestions.push({
               key: addedQuestions.length,
               question: "",
@@ -113,6 +109,7 @@ class SingleQuizPage extends Component{
               if(x.correctAnswer !== null)
               Request.question.setCorrect(x.id, x.correctAnswer.id)
             })
+              window.location.reload()
           }} />
         </div>
       )

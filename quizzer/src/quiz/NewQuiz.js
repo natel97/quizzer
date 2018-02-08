@@ -20,9 +20,7 @@ class NewQuiz extends Component {
         },
         token:  localStorage.getItem("token")
       }).then((data) => {
-        console.log(data)
         if(data.status === 200){
-          console.log("Status is 200!")
           browserHistory.push('/quiz/' + data.data.id)
         }
       })

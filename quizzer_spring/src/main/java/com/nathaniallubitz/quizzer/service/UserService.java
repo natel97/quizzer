@@ -77,7 +77,7 @@ public class UserService {
     private String generateToken(){
         SecureRandom random = new SecureRandom();
         int length = random.nextInt(10) + 20;
-        String characterChoice = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()-";
+        String characterChoice = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@☺♥#$%^&*()-";
         String build = "";
         int position = 0;
         while(position < length){

@@ -5,6 +5,7 @@ import App from './App';
 import { Provider } from 'react-redux';
 import registerServiceWorker from './registerServiceWorker';
 import { Router, browserHistory } from 'react-router';
+import { Request } from './Request'
 import {
   HashRouter,
   Link,
@@ -18,11 +19,31 @@ import NewQuiz from './quiz/NewQuiz'
 import NavBar from './navbar/navbar'
 import SignupPage from './signup_page/SignupPage'
 import SingleQuizPage from './quiz/SingleQuizPage'
+let token = localStorage.getItem('token');
+
+const login = {
+  id: -1,
+  name: ""
+}
+
+let loginFunc = (token) => {
+console.log("inside Login function!")
+  Request.user.findByToken(token).then((data) => {
+    login.id = data.data.id
+    login.name = data.data.name
+    console.log(login)
+  })
+}
+
+if(token !== null){
+  loginFunc(token)
+}
+
 
 
 ReactDOM.render(
   <div id="entire-page">
-  <NavBar />
+  <NavBar login={login}/>
   <div id="body">
     <Router history={browserHistory}>
       <div>
@@ -31,7 +52,7 @@ ReactDOM.render(
         <Route path="/quiz" component={QuizIndex} />
         <Route path="/quiz/new" component={NewQuiz} />
         <Route path="/quiz/:id" component={SingleQuizPage} />
-        <Route path="/login" component={LoginPage} />
+        <Route path="/login" component={LoginPage} login={loginFunc}/>
         <Route path="/signup" component={SignupPage} />
         <Route path="*" component={MainPage} />
       </div>

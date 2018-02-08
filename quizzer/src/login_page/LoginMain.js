@@ -18,9 +18,9 @@ class LoginMain extends React.Component {
         email: this.state.login.username,
         pwHash: this.state.login.password
       }).then((data) => {
-        console.log(data)
         if(data.status === 200){
           localStorage.setItem('token', data.data);
+          this.props.route.login(data.data)
           browserHistory.push('/quiz')
         }
       })
@@ -38,6 +38,7 @@ class LoginMain extends React.Component {
     }
 
     this.render = () => {
+
       return(
         <div>
           <input onChange={this.updateInfo} type="text" placeholder="Username" value={this.state.login.username}></input>
