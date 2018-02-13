@@ -1,4 +1,4 @@
-import React, { Component }  from 'react'
+import React  from 'react'
 
 const MainPage = () => {
   return(
@@ -9,7 +9,7 @@ const MainPage = () => {
       <button>Users</button>
     </div>
   )
-}
+};
 
 
 export default MainPage

@@ -18,6 +18,8 @@ import javax.transaction.Transactional;
 import java.security.SecureRandom;
 import java.sql.Date;
 import java.time.Instant;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -85,6 +87,10 @@ public class UserService {
             position++;
         }
         return build;
+    }
+    
+    public List<UserPOJO> allUsers(){
+    	return userRepository.findAll().stream().map(x -> new UserPOJO(x.setPwHash(""))).collect(Collectors.toList());
     }
 
     @Scheduled(fixedDelay = 5000)

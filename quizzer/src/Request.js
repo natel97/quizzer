@@ -1,11 +1,11 @@
 import axios from 'axios'
 
-const BASE = "http://localhost:8080"
+const BASE = "http://localhost:8080";
 
 export const APP_VARS = {
   loggedIn: false,
   token: ""
-}
+};
 
 export const Request =  {
   user: {
@@ -14,7 +14,8 @@ export const Request =  {
     }),
     find: (id) => axios.get(`${BASE}/users/${id}`),
     token: (user) => axios.post(`${BASE}/users/getToken`, user),
-    findByToken: (token) => axios.get(`${BASE}/users/user/lookup/${token}`)
+    findByToken: (token) => axios.get(`${BASE}/users/user/lookup/${token}`),
+    all: () => axios.get(`${BASE}/users/all`)
   },
   quiz:{
     new: (quiz) => axios.post(`${BASE}/quiz`, quiz),

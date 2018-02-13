@@ -1,11 +1,10 @@
-import React, {Component} from 'react'
-import axios from 'axios'
+import React  from 'react'
 import {browserHistory} from 'react-router';
 import { Request } from '../Request'
 
 class SignupPage extends React.Component{
   constructor(a, b){
-    super(a,b)
+    super(a,b);
 
     this.state = {
       login: {
@@ -17,7 +16,7 @@ class SignupPage extends React.Component{
       message: {
         message: ""
       }
-    }
+    };
 
     this.createUser = () => {
       if(this.state.login.password === this.state.login.confirm){
@@ -26,13 +25,13 @@ class SignupPage extends React.Component{
           pwHash: this.state.login.password,
           name: this.state.login.name
       }).then((data) => {
-        console.log(data)
+        console.log(data);
         if(data.status === 200){
           Request.user.token({
             email: this.state.login.email,
             pwHash: this.state.login.password
           }).then((data) => {
-            console.log(data)
+            console.log(data);
             if(data.status === 200){
               localStorage.setItem('token', data.data);
               browserHistory.push("/quiz")
@@ -42,30 +41,32 @@ class SignupPage extends React.Component{
         }
       })}
       else {
-        const message = this.state.message
-        message.message = "Error: Passwords do not match!"
-        this.setState(message)
+        const message = this.state.message;
+        message.message = "Error: Passwords do not match!";
+        this.setState(message);
         console.log(this.state.message.message)
       }
-    }
+    };
 
     this.onChange = (event) => {
-      const login = this.state.login
+      const login = this.state.login;
       switch(event.target.placeholder){
         case "Email":
-          login.email = event.target.value
+          login.email = event.target.value;
           break;
         case "Password":
-          login.password = event.target.value
+          login.password = event.target.value;
           break;
         case "Confirm Password":
-          login.confirm = event.target.value
-          break
+          login.confirm = event.target.value;
+          break;
         case "Name":
-          login.name = event.target.value
+          login.name = event.target.value;
+          break;
+          default:break;
       }
-      this.setState(login: login)
-    }
+      this.setState(login)
+    };
 
     this.render = () => {
       return (

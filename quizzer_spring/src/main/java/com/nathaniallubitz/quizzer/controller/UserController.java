@@ -1,15 +1,23 @@
 package com.nathaniallubitz.quizzer.controller;
 
-import com.nathaniallubitz.quizzer.entity.Token;
+import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.nathaniallubitz.quizzer.entity.User;
 import com.nathaniallubitz.quizzer.exception.SessionNotFoundException;
 import com.nathaniallubitz.quizzer.exception.UserDefinedException;
 import com.nathaniallubitz.quizzer.pojo.UserPOJO;
 import com.nathaniallubitz.quizzer.service.UserService;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @RestController
@@ -54,6 +62,11 @@ public class UserController {
             System.out.println("Error Code: " + e.getErrorCode() + "\tMessage: " + e.getErrorMessage());
             return "Error Code: " + e.getErrorCode() + "\tMessage: " + e.getErrorMessage();
         }
+    }
+    
+    @GetMapping("/all")
+    public List<UserPOJO> getAllUsers(){
+    	return userService.allUsers();
     }
 
 }

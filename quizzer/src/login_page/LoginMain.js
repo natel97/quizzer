@@ -1,4 +1,4 @@
-import React, { Component }  from 'react'
+import React  from 'react'
 import { Request } from '../Request'
 import { browserHistory } from 'react-router'
 
@@ -20,22 +20,22 @@ class LoginMain extends React.Component {
       }).then((data) => {
         if(data.status === 200){
           localStorage.setItem('token', data.data);
-          this.props.route.login(data.data)
+          this.props.route.login(data.data);
           browserHistory.push('/quiz')
         }
       })
-    }
+    };
 
     this.updateInfo = (event) => {
-      const login = this.state.login
+      const login = this.state.login;
       if (event.target.placeholder === "Username"){
         login.username = event.target.value
       }
       else{
         login.password = event.target.value
       }
-      this.setState(login: login)
-    }
+      this.setState(login)
+    };
 
     this.render = () => {
 

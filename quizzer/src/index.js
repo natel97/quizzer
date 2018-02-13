@@ -1,14 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import { Provider } from 'react-redux';
 import registerServiceWorker from './registerServiceWorker';
 import { Router, browserHistory } from 'react-router';
 import { Request } from './Request'
 import {
-  HashRouter,
-  Link,
   Route
 } from 'react-router-dom';
 
@@ -19,21 +15,23 @@ import NewQuiz from './quiz/NewQuiz'
 import NavBar from './navbar/navbar'
 import SignupPage from './signup_page/SignupPage'
 import SingleQuizPage from './quiz/SingleQuizPage'
+import NewSessionPage from './quiz/NewSessionPage'
+
+
+
 let token = localStorage.getItem('token');
 
 const login = {
   id: -1,
   name: ""
-}
+};
 
 let loginFunc = (token) => {
-console.log("inside Login function!")
   Request.user.findByToken(token).then((data) => {
-    login.id = data.data.id
+    login.id = data.data.id;
     login.name = data.data.name
-    console.log(login)
   })
-}
+};
 
 if(token !== null){
   loginFunc(token)
@@ -54,6 +52,7 @@ ReactDOM.render(
         <Route path="/quiz/:id" component={SingleQuizPage} />
         <Route path="/login" component={LoginPage} login={loginFunc}/>
         <Route path="/signup" component={SignupPage} />
+        <Route path="/quiz/:id/session" component={NewSessionPage} />
         <Route path="*" component={MainPage} />
       </div>
     </Router>

@@ -1,17 +1,16 @@
 import React, { Component }  from 'react'
-import axios from 'axios'
 import { browserHistory } from 'react-router';
 import {Request}  from '../Request'
 
 class NewQuiz extends Component {
   constructor(a, b){
-    super(a,b)
+    super(a,b);
 
     this.state = {
       quiz: {
         title: ""
       }
-    }
+    };
 
     this.createQuiz = () => {
       Request.quiz.new({
@@ -24,13 +23,13 @@ class NewQuiz extends Component {
           browserHistory.push('/quiz/' + data.data.id)
         }
       })
-    }
+    };
 
     this.updateFields = (event) => {
       const quiz = this.state.quiz;
       quiz.title = event.target.value;
-      this.setState(quiz: quiz)
-    }
+      this.setState(quiz)
+    };
 
     this.render = () => {
       return (

@@ -1,16 +1,16 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 class NavBar extends React.Component{
   constructor(a, b){
-    super(a,b)
-    console.log(this.props.login.id)
+    super(a,b);
+    console.log(this.props.login.id);
 
     this.componentWillReceiveProps = (nextProps) => {
     if(this.props.login.id !== JSON.stringify(nextProps.login.id))
     {
            console.log(nextProps.login.id + ":  HAS BEEN UPDATED")
     }
-}
+};
     this.render = () => {
       return (
         <div id="nav-bar">

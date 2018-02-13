@@ -1,9 +1,9 @@
-import React, { Component } from 'React'
+import React, { Component } from 'React';
 
 
 class SingleQuiz extends React.Component{
   constructor(a, b){
-    super(a, b)
+    super(a, b);
 
     this.render = () => {
 

@@ -20,4 +20,6 @@ public class SessionController {
     public QuestionPOJO getCurrentQuestion(@PathVariable Integer sessionId) {
         return sessionService.getCurrentQuestion(sessionId);
     }
+
 }
+
